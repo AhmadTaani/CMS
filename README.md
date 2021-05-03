@@ -1,61 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## About the project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Company ABC is looking to create a complaint management portal. Users will be able to register, login, send a complaint
+and check the status of the complaint.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Getting started
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+###Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Please check the official laravel installation guide for server requirements before you start. [documentation](https://laravel.com/docs) 
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+Clone the repository
+```
+git clone https://github.com/AhmadTaani/CMS.git
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Install all the dependencies using composer
+```
+composer install
+```
 
-### Premium Partners
+Copy the example env file and make the required configuration changes in the .env file
+```
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+Generate a new application key
+```
+php artisan key:generate
+```
 
-## Contributing
+Run the database migrations (Set the database connection in .env before migrating)
+```
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Start the local development server
+```
+php artisan serve
+```
+You can now access the server at http://localhost:8000
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+##Database seeding
+Populate the database with seed data with relationships which includes users, complaints, categories and other screens. This can help you to quickly start testing the website and start using it with ready content.
 
-## Security Vulnerabilities
+Open the database seeder files inside **database/seeders** and set the property values as per your requirement
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+database/seeders/UserSeeder.php
+database/seeders/CategorySeeder.php
+database/seeders/ComplaintSeeder.php
+```
+**or** you can use the values I already created
+
+Run the database seeder, and you're **done**
+```
+php artisan db:seed
+```
+
+**Note** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+```
+php artisan migrate:refresh
+```
+
+##Code overview
+###Folders
+
+-<code>app</code> - Contains all the Eloquent models
+
+-<code>app/Http/Controllers/Admin</code> - Contains all the admin controllers
+
+-<code>app/Http/Controllers/User</code> - Contains all the user controllers
+
+-<code>app/Http/Controllers/Auth</code> - Contains all the auth controllers
+
+-<code>app/Http/Middleware</code> - Contains all auth middlewares
+
+-<code>app/Http/Requests</code> - Contains all the form requests
+
+-<code>app/Http/Models</code> - Contains all models used
+
+-<code>database/migrations</code> - Contains all the database migrations
+
+-<code>database/seeders</code> - Contains the database seeder
+
+-<code>resources/views/admin</code> - Contains all admin views
+
+-<code>resources/views/user</code> - Contains all user views
+
+-<code>resources/views/layouts</code> - Contains all common view code
+
+-<code>routes</code> -  Contains all the web routes defined in web.php file
+
+
 
 ## License
 
